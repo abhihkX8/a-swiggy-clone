@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+ name: swiggy-clone-dep
+ namespace: swiggy-ns
+ labels:
+  app: swiggy
+
+spec:
+  replicas: 0
+  selector: 
+   matchLabels:
+     app: swiggy
+   
+  template:
+    metadata:
+      name: swiggy
+      namespace: swiggy-ns
+      labels:
+        app: swiggy
+
+    spec:
+      containers:
+        - name: swiggy
+          image: abhimaske/swiggy-clone
+          ports:
+           - containerPort: 3000
